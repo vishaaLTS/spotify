@@ -15,11 +15,11 @@ import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
-from flask import Flask, render_template
-from flask_cors import CORS
+from flask import Flask, render_template  # type: ignore # pyre-ignore
+from flask_cors import CORS  # type: ignore # pyre-ignore
 
-from recommender.hybrid import HybridRecommender
-from api.routes import api_bp
+from recommender.hybrid import HybridRecommender  # type: ignore # pyre-ignore
+from api.routes import api_bp  # type: ignore # pyre-ignore
 
 
 # ── App factory ───────────────────────────────────────────────────────────────
