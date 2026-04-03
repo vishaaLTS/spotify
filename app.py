@@ -38,9 +38,11 @@ def create_app() -> Flask:
     try:
         engine.load_models()
         print("  Engine loaded successfully.\n")
-    except FileNotFoundError as exc:
-        print(f"\n[ERROR] {exc}")
-        print("  WARNING: Models not found! Recommendations will fail.")
+    except Exception as exc:
+        import traceback
+        traceback.print_exc()
+        print(f"\n[ERROR loading models] {exc}")
+        print("  WARNING: Models not found or failed to load! Recommendations will fail.")
         print("  Run  python train_all.py  first to train the models locally.\n")
         # Do not exit so Vercel/Render can still boot up and show the UI!
 
