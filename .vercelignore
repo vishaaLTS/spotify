@@ -1,7 +1,8 @@
 dataset.zip
-models/saved/*.pkl
 .git
 env/
 venv/
 __pycache__/
-*.pkl
+frontend/node_modules/
+frontend/src/
+preprocessing/

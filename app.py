@@ -15,7 +15,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
-from flask import Flask, render_template  # type: ignore # pyre-ignore
+from flask import Flask, render_template, send_from_directory  # type: ignore # pyre-ignore
 from flask_cors import CORS  # type: ignore # pyre-ignore
 
 from recommender.hybrid import HybridRecommender  # type: ignore # pyre-ignore
@@ -26,8 +26,9 @@ from api.routes import api_bp  # type: ignore # pyre-ignore
 def create_app() -> Flask:
     app = Flask(
         __name__,
-        template_folder=os.path.join(BASE_DIR, "templates"),
-        static_folder=os.path.join(BASE_DIR, "static"),
+        template_folder=os.path.join(BASE_DIR, "frontend", "dist"),
+        static_folder=os.path.join(BASE_DIR, "frontend", "dist", "assets"),
+        static_url_path="/assets"
     )
     CORS(app)
 
@@ -48,10 +49,14 @@ def create_app() -> Flask:
     # ── Register blueprints ────────────────────────────────────────────────
     app.register_blueprint(api_bp)
 
-    # ── Frontend route ────────────────────────────────────────────────────
+    # ── Frontend routes ───────────────────────────────────────────────────
     @app.route("/")
     def index():
         return render_template("index.html")
+
+    @app.route("/<path:filename>")
+    def root_static(filename):
+        return send_from_directory(app.template_folder, filename)
 
     return app
 
