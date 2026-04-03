@@ -1,0 +1,53 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Large data files (regeneratable)
+data/*.csv
+data/*.db
+data/*.zip
+dataset/
+user_item_matrix.csv
+audio_features.csv
+history_clean.csv
+songs_clean.csv
+
+# Trained models (regeneratable via train_all.py)
+models/saved/*.pkl
+
+# Logs and temp files
+*.log
+*.txt
+server_*.txt
+tunnel_*.txt
+live_tunnel.txt
+
+# Plots (regeneratable)
+notebooks/plots/*.png
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.mp3 
+*.wav 
+*.zip 
+*.h5 
+*.pkl 
+dataset/ 
