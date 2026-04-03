@@ -13,18 +13,7 @@ venv.bak/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Large data files (regeneratable)
-data/*.csv
-data/*.db
-data/*.zip
-dataset/
-user_item_matrix.csv
-audio_features.csv
-history_clean.csv
-songs_clean.csv
-
-# Trained models (regeneratable via train_all.py)
-models/saved/*.pkl
+# Large data files and models are now tracked by Git LFS
 
 # Logs and temp files
 *.log
@@ -47,7 +36,3 @@ Thumbs.db
 *.swo
 *.mp3 
 *.wav 
-*.zip 
-*.h5 
-*.pkl 
-dataset/ 
