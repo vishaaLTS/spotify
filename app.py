@@ -39,8 +39,9 @@ def create_app() -> Flask:
         print("  Engine loaded successfully.\n")
     except FileNotFoundError as exc:
         print(f"\n[ERROR] {exc}")
-        print("  Run  python train_all.py  first to train the models.\n")
-        sys.exit(1)
+        print("  WARNING: Models not found! Recommendations will fail.")
+        print("  Run  python train_all.py  first to train the models locally.\n")
+        # Do not exit so Vercel/Render can still boot up and show the UI!
 
     app.config["ENGINE"] = engine
 
@@ -55,7 +56,8 @@ def create_app() -> Flask:
     return app
 
 
+app = create_app()
+
 # ── Run ───────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    app = create_app()
     app.run(host="0.0.0.0", port=5000, debug=False)
